@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :i_am_cheap, IAmCheap.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "",
   database: "i_am_cheap_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
