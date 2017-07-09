@@ -1,3 +1,5 @@
-<form method="POST" action="#">
-  Welcome to your login form
+<form method="POST" action="/login">
+  <label>Email: <input type="text" name="email"/></label><br />
+  <label>Password: <input type="password" name="password"/></label><br />
+  <input type="submit" name="Login" value="Login"/>
 </form>

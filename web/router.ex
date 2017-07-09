@@ -19,6 +19,7 @@ defmodule IAmCheap.Router do
     get "/", PageController, :index
     get "/login", LoginController, :index
     post "/login", LoginController, :create
+    resources "/users", UserController
   end
 
   # Other scopes may use custom stacks.
