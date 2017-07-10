@@ -36,7 +36,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :i_am_cheap, IAmCheap.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "Wizard",
   password: "",
   database: "i_am_cheap_dev",
   hostname: "localhost",
