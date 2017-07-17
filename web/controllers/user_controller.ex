@@ -1,4 +1,5 @@
 defmodule IAmCheap.UserController do
+  require Logger
   use IAmCheap.Web, :controller
 
   alias IAmCheap.User
@@ -12,15 +13,16 @@ defmodule IAmCheap.UserController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, params) do
-    # %{"email" =>email, "password" => password, "confirm_password" => confirm_password}
-    changeset = User.changeset(params)
+  def create(conn, %{"user" => user_params}) do
+    changeset = %User{} |> User.changeset(user_params)
 
     case Repo.update(changeset) do
-      {:ok, } ->
+      {:ok, changeset} ->
         conn
         |> put_flash(:info, "User create")
         |> redirect(to: user_path(conn, :index))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
     end
   end
 end
