@@ -18,12 +18,31 @@ defmodule IAmCheap.User do
     |> cast(params, [:email, :password, :confirm_password])
     |> validate_required([:email, :password, :confirm_password])
     |> validate_length(:password, min: 6)
+    |> validate_passwords_equal
+    |> hash_password
   end
 
-  def hash_password(changeset) do
+  defp hash_password(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
+        put_change(changeset, :crypted_password, Comeonin.Bcrypt.hashpwsalt(password))
+      _ ->
+        changeset
+    end
   end
 
-  def passwords_equal do
-    
+  defp validate_passwords_equal(changeset) do
+    password = get_field(changeset, :password)
+    password_confirm = get_field(changeset, :confirm_password)
+    validate_passwords_equal(changeset, password, password_confirm)
+  end
+
+  defp validate_passwords_equal(changeset, password, password_confirmation) do
+    cond do
+      password == password_confirmation ->
+        changeset
+      password != password_confirmation ->
+        add_error(changeset, :confirm_password, "did not match password")
+    end
   end
 end

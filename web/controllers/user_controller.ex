@@ -16,7 +16,7 @@ defmodule IAmCheap.UserController do
   def create(conn, %{"user" => user_params}) do
     changeset = %User{} |> User.changeset(user_params)
 
-    case Repo.update(changeset) do
+    case Repo.insert(changeset) do
       {:ok, changeset} ->
         conn
         |> put_flash(:info, "User create")
