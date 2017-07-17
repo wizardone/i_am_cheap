@@ -6,6 +6,18 @@
   <% end %>
 
   <div class="form-group">
+    <label>
+      Email: <%= text_input f, :email %>
+    </label>
+    <br />
+    <label>
+      Password: <%= text_input f, :password %>
+    </label>
+    <br />
+    <label>
+      Repeat Password: <%= text_input f, :confirm_password %>
+    </label>
+    <br />
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
