@@ -1,8 +1,8 @@
 <h2>Show user</h2>
 
 <ul>
-
+  <li><%=@user.email%></li>
 </ul>
 
-<%= link "Edit", to: user_path(@conn, :edit, @user) %>
+<%= link "Edit", to: user_path(@conn, :edit, @user) %><br />
 <%= link "Back", to: user_path(@conn, :index) %>

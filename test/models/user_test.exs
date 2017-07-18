@@ -3,8 +3,8 @@ defmodule IAmCheap.UserTest do
 
   alias IAmCheap.User
 
-  @valid_attrs %{}
-  @invalid_attrs %{}
+  @valid_attrs %{email: "test@test.com", password: "qweqwe", confirm_password: "qweqwe"}
+  @invalid_attrs %{email: "some_random", password: "qwe"}
 
   test "changeset with valid attributes" do
     changeset = User.changeset(%User{}, @valid_attrs)
