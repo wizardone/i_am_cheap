@@ -1,11 +1,11 @@
 defmodule IAmCheap.Account do
   use IAmCheap.Web, :model
 
-  schema do
+  schema "accounts" do
 
   end
 
-  def changeset(struct, params // %{}) do
+  def changeset(struct, params \\ %{}) do
 
   end
 end
