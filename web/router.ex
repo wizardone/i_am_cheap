@@ -18,7 +18,7 @@ defmodule IAmCheap.Router do
 
     get "/", PageController, :index
     resources "/session", SessionController
-    resources "/users", UserController
+    resources "/users", UserController, only: [:new, :create, :delete]
   end
 
   # Other scopes may use custom stacks.
