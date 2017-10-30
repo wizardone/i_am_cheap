@@ -1,4 +1,4 @@
-defmodule IAmCheap.LoginView do
+defmodule IAmCheap.SessionView do
   use IAmCheap.Web, :view
 
   def csrf_token(conn) do

@@ -1,4 +1,4 @@
-<form method="POST" action="/login">
+<form method="POST" action="/session">
   <input type="hidden" name="csrf_token" value="<%= csrf_token(@conn) %>">
   <label>Email: <input type="text" name="email"/></label><br />
   <label>Password: <input type="password" name="password"/></label><br />

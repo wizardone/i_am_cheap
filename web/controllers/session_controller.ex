@@ -1,4 +1,4 @@
-defmodule IAmCheap.LoginController do
+defmodule IAmCheap.SessionController do
   use IAmCheap.Web, :controller
 
   def index(conn, _params) do
