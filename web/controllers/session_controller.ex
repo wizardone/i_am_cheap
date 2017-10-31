@@ -13,8 +13,8 @@ defmodule IAmCheap.SessionController do
         IO.puts "OMG"
       nil ->
         conn
-        |> put_flash(:info, "Incorrect credentials")
-        render conn, "new.html"
+        |> put_flash(:error, "Incorrect credentials")
+        |> render("new.html")
     end
   end
 
