@@ -20,6 +20,7 @@ defmodule IAmCheap.User do
     |> validate_length(:password, min: 6)
     |> validate_passwords_equal
     |> hash_password
+    |> unique_constraint(:email)
   end
 
   defp hash_password(changeset) do
