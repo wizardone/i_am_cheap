@@ -17,10 +17,13 @@
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
             <li>
-              <%= link "Sign in", to: session_path(@conn, :new)%>
-            </li>
-            <li>
-              <%= link "Register", to: user_path(@conn, :new)%>
+              <%= if logged_in?(@conn) do %>
+                <%= link "Sign Out", to: session_path(@conn, :delete), method: :delete %>
+              <% else %>
+                <%= link "Sign In", to: session_path(@conn, :new)%>
+                Or
+                <%= link "Register", to: user_path(@conn, :new)%>
+              <% end %>
             </li>
           </ul>
         </nav>

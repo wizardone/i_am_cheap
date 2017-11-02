@@ -17,7 +17,9 @@ defmodule IAmCheap.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/session", SessionController
+    get "/session/new", SessionController, :new
+    post "/session/create", SessionController, :create
+    delete "/session/delete", SessionController, :delete
     resources "/users", UserController
   end
 
