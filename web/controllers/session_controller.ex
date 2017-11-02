@@ -7,14 +7,23 @@ defmodule IAmCheap.SessionController do
   end
 
   def create(conn, %{"session" => %{ "email" => email, "password" => password }}) do
-    user = IAmCheap.User |> IAmCheap.Repo.get_by(email: email, crypted_password: password)
+    user = IAmCheap.User |> IAmCheap.Repo.get_by(email: email)
     case user do
-      {:ok, %IAmCheap.User{}} ->
-        IO.puts "OMG"
       nil ->
         conn
-        |> put_flash(:error, "Incorrect credentials")
+        |> put_flash(:error, "Please check your credentials")
         |> render("new.html")
+      _ ->
+        case Comeonin.Bcrypt.checkpw(password, user.crypted_password) do
+          true ->
+            conn
+            |> put_flash(:info, "Logic successfull")
+            |> redirect(to: user_path(conn, :index))
+          false ->
+            conn
+            |> put_flash(:error, "Incorrect password")
+            |> render("new.html")
+        end
     end
   end
 
